@@ -1,20 +1,12 @@
 $(document).ready(function(){
- //скролл ссылок 
-    $(document).on('click', '.menu__link, #link-one, #link-two', function(event) {
-        var $anchor = $(this);
+
+    $("a.menu__link, a.more").on("click", function(e){
+        e.preventDefault();
+        var anchor = $(this).attr('href');
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
-        }, 1000, 'easeInOutExpo');
-        event.preventDefault();
+            scrollTop: $(anchor).offset().top - 60
+        }, 800);
     });
-
-  $('nav [href]').each(function() {
-    if (this.href == window.location.href) {
-      $(this).addClass('active');
-    }
-  });
-
-
 
 //модальное окно
     $('[data-modal=project]').on('click', function(e) {
